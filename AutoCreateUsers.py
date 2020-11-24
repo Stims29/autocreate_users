@@ -35,7 +35,7 @@ def create_user(username, employee_id, display_name,  active=False):
     groups = '"cn=All,{}" ' \
              '"cn=Users_Deny,{}" '.format(groups_ou, groups_ou)
              
-    command = 'dsadd user ' \
+   command = 'dsadd user ' \
               '{} ' \
               '-samid "{}" ' \
               '-upn "{}" ' \
@@ -44,9 +44,8 @@ def create_user(username, employee_id, display_name,  active=False):
               '-desc "{}" ' \
               '-disabled {} ' \
               '-pwd {} ' \
-              '-pwdneverexpires yes ' \
               '-mustchpwd yes ' \
-              '-canchpwd yes ' \
+              '-pwdneverexpires no ' \
               '-memberof {} ' \
               '-acctexpires never ' \
               ''.format(
