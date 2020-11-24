@@ -8,7 +8,7 @@ import ldap
 conn = ldap.initialize('ldap://127.0.0.1')
 conn.protocol_version = 3
 conn.set_option(ldap.OPT_REFERRALS, 0)
-conn.simple_bind_s('Administrateur@ledomaine.com','deusEx156!')
+conn.simple_bind_s('Administrateur@ledomaine.com','xxxxxxxxxx')
         
 domain_controller = 'DC=ledomaine,DC=com'
 users_ou = 'OU=All,OU=Domain_Users,{}'.format(domain_controller)
