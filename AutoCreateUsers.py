@@ -16,7 +16,7 @@ groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
 
 def create_user(username, employee_id, display_name,  active=False):
     """
-    Create New user in AD
+    Créé un nouvel utilisateur dans l'AD
     :param username:
     :param employee_id:
     :param display_name:
@@ -29,7 +29,7 @@ def create_user(username, employee_id, display_name,  active=False):
         disabled = 'yes'
 
     description = "Utilisateur ajouté par script python à  {}".format(datetime.datetime.now())
-    default_password = 'DefaultP@55worD'
+    default_password = 'P@55worD'
 
     dn = '"CN={},{}"'.format(username, users_ou)
     groups = '"cn=All,{}" ' \
