@@ -4,7 +4,6 @@
 import datetime
 import os
 import ldap
-import pexpect
 
 # Initialiser une nouvelle connection ldap pour modifier l'Active Directory avec le compte Administrateur
 conn = ldap.initialize('ldap://127.0.0.1')
@@ -17,7 +16,7 @@ domain_controller = 'DC=ledomaine,DC=com'
 users_ou = 'OU=All,OU=Domain_Users,{}'.format(domain_controller)
 groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
 
-# Fonction qui crée le username(pour ouvrir un session sur le domaine), la fonction de l'utilisateur dans l'entreprise, le prénom et le nom complet
+# Fonction qui crée le username(pour ouvrir un session sur le domaine), la fonction de l'utilisateur dans l'entreprise, le prénom et le nom complet.
 def create_user(username, employee_id, display_name, active=False):
     """
     Créé un nouvel utilisateur dans l'AD
@@ -70,6 +69,7 @@ os.chdir(r'C:/Users/Administrateur/Documents/autocreate_users')
 file = open('users.txt', 'rt')
 
 for line in file:
+    # La méthode strip() supprime tous les caractères à droite et à gauche de la chaîne de caractères.
     # La fonction split() découpe une chaîne de caractères suivant les espaces qu'elle contient.
     users_paramaters_list = line.strip().split(",")
     # On déclare un nouveau dictionnaire contenant les paramètres utilisateurs
