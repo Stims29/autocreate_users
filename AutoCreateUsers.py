@@ -10,7 +10,7 @@ import pexpect
 conn = ldap.initialize('ldap://127.0.0.1')
 conn.protocol_version = 3
 conn.set_option(ldap.OPT_REFERRALS, 0)
-conn.simple_bind_s('Administrateur@ledomaine.com','deusEx156!')
+conn.simple_bind_s('Administrateur@ledomaine.com','password')
 
 # Précise sur quel domaine la connection s'effectue ainsi que l'OU et le groupe        
 domain_controller = 'DC=ledomaine,DC=com'
