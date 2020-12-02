@@ -17,7 +17,7 @@ Le script est lancé depuis le serveur disposant lui-même du service Active Dir
 
 conn = ldap.initialize('ldap://127.0.0.1')
 
-Nous utilisons le module python_ldap-3.3.1 donc la version 3
+Nous utilisons le module python_ldap-3.3.1 donc la version 3 \
 conn.protocol_version = 3
 
 Pour pouvoir s'authentifier
