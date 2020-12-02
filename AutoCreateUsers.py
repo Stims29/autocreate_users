@@ -1,6 +1,10 @@
 #! /usr/bin/python3.9
 # -*- coding:utf-8 -*-
 
+# autocreate_users est un script Python pour automatiser l'ajout d'utilisateurs dans l'Active Directory depuis un fichier .txt.
+# __author__      = "Steve Beyer"
+# __copyright__   =
+
 import datetime
 import os
 import ldap
