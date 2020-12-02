@@ -29,32 +29,32 @@ conn.simple_bind_s('Administrateur@ledomaine.com','password')
 3. La déclaration du domaine et des OU (Unité Organisationnelle)
 
 Le domaine controller sur lequel nous allons ajouter nos utilisateurs
-ici ledomaine.com
+ici ledomaine.com \
 domain_controller = 'DC=ledomaine,DC=com'
 
-L'OU dans laquelle nos utilisateurs vont être créés Ici, ce sera dans l'OU 'All' de l'OU Domain_Users 
+L'OU dans laquelle nos utilisateurs vont être créés Ici, ce sera dans l'OU 'All' de l'OU Domain_Users \
 users_ou = 'OU=All,OU=Domain_Users,{}'.format(domain_controller)
 
-L'OU dans laquelle se trouve le groupe utilisateurs ici, Domain_Users_Groups
+L'OU dans laquelle se trouve le groupe utilisateurs ici, Domain_Users_Groups \
 groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
 
 4. Création de la fonction 'create_user' avec ses paramètres
 
 Nous allons demander à la fonction d'envoyer à 'cmd' la création d'un utilisateur via la commande 'dsadd user' avec les paramètres 'username', 'employee_id', 'display_name'. le boléen 'active' sera 'False' par défaut.
 
-def create_user(username, employee_id, display_name, active=False):
-"""
-Créé un nouvel utilisateur dans l'AD
-:param username:
-:param employee_id:
-:param display_name:
-:param active:
-:return:
-"""
-if active:
-disabled = 'no'
-else:
-disabled = 'yes'
+def create_user(username, employee_id, display_name, active=False): \
+""" \
+Créé un nouvel utilisateur dans l'AD \
+:param username: \
+:param employee_id: \
+:param display_name: \
+:param active: \
+:return: \
+""" \
+if active: \
+  disabled = 'no' \
+else: \
+  disabled = 'yes'
 
 Le module datetime donnera la date et l'heure auxquelles l'utilisateur a été créé dans la description du profil.
 Et nous déclarons le mot de par défaut de l'utilisateur.
@@ -69,19 +69,19 @@ Remarque : Vous pouvez modifier selon les besoins
 
 Nous déclarons, ensuite, la commande à utiliser \
 command = 'dsadd user ' \
-'{} ' \
-'-samid "{}" ' \
-'-upn "{}" ' \
-'-display "{}" ' \
-'-empid "{}" ' \
-'-desc "{}" ' \
-'-disabled {} ' \
-'-pwd {} ' \
-'-mustchpwd yes ' \
-'-pwdneverexpires no ' \
-'-memberof {} ' \
-'-acctexpires never ' \
-''.format( dn, username, username, display_name, employee_id, description, disabled, default_password, groups, )
+          '{} ' \
+          '-samid "{}" ' \
+          '-upn "{}" ' \
+          '-display "{}" ' \
+          '-empid "{}" ' \
+          '-desc "{}" ' \
+          '-disabled {} ' \
+          '-pwd {} ' \
+          '-mustchpwd yes ' \
+          '-pwdneverexpires no ' \
+          '-memberof {} ' \
+          '-acctexpires never ' \
+'         '.format( dn, username, username, display_name, employee_id, description, disabled, default_password, groups, )
 
 Nous envoyons la commande à 'cmd'
 os.system(command)
@@ -100,12 +100,12 @@ Pour les lignes dans le fichier
 for line in file:
 La méthode strip() supprime tous les caractères à droite et à gauche de la chaîne de caractères.
 La fonction split() va découper la chaîne de caractères en délimitant les blocs par la ",".
-users_paramaters_list = line.strip().split(",")
+  users_paramaters_list = line.strip().split(",")
 On déclare un nouveau dictionnaire contenant les paramètres utilisateurs(0=username, 1=employee_id, 2=display_name)
-users_paramaters = {}
-users_paramaters['username'] = users_paramaters_list[0]
-users_paramaters['employee_id'] = users_paramaters_list[1]
-users_paramaters['display_name'] = users_paramaters_list[2]
+  users_paramaters = {}
+  users_paramaters['username'] = users_paramaters_list[0]
+  users_paramaters['employee_id'] = users_paramaters_list[1]
+  users_paramaters['display_name'] = users_paramaters_list[2]
 On appelle la fonction create_user pour associer les paramètres contenus dans le fichier texte et on active le profil
 create_user(users_paramaters['username'],users_paramaters['employee_id'],users_paramaters['display_name'],active=True)
 
