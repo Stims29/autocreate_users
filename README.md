@@ -67,7 +67,7 @@ groups = '"cn=All,{}" '.format(groups_ou)
 
 Remarque : Vous pouvez modifier selon les besoins
 
-Nous déclarons, ensuite, la commande à utiliser
+Nous déclarons, ensuite, la commande à utiliser \
 command = 'dsadd user ' \
 '{} ' \
 '-samid "{}" ' \
