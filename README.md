@@ -23,7 +23,8 @@ conn.protocol_version = 3
 Pour pouvoir s'authentifier
 conn.set_option(ldap.OPT_REFERRALS, 0)
 
-Nous nous connectons avec le compte Administrateur et son mot de passe. conn.simple_bind_s('Administrateur@ledomaine.com','password')
+Nous nous connectons avec le compte Administrateur et son mot de passe.
+conn.simple_bind_s('Administrateur@ledomaine.com','password')
 
 3. La déclaration du domaine et des OU (Unité Organisationnelle)
 
@@ -31,7 +32,8 @@ Le domaine controller sur lequel nous allons ajouter nos utilisateurs
 ici ledomaine.com
 domain_controller = 'DC=ledomaine,DC=com'
 
-L'OU dans laquelle nos utilisateurs vont être créés Ici, ce sera dans l'OU 'All' de l'OU Domain_Users users_ou = 'OU=All,OU=Domain_Users,{}'.format(domain_controller)
+L'OU dans laquelle nos utilisateurs vont être créés Ici, ce sera dans l'OU 'All' de l'OU Domain_Users 
+users_ou = 'OU=All,OU=Domain_Users,{}'.format(domain_controller)
 
 L'OU dans laquelle se trouve le groupe utilisateurs ici, Domain_Users_Groups
 groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
@@ -59,24 +61,26 @@ Et nous déclarons le mot de par défaut de l'utilisateur.
 description = "Utilisateur ajouté par script python le {}".format(datetime.datetime.now())
 default_password = 'P@55worD'
 
-Nous déclarons le dn (Distinguished Name) qui sera donc le 'username' dans l'OU 'All' et le groups dans le groupe 'All' dn = '"CN={},{}"'.format(username, users_ou)
+Nous déclarons le dn (Distinguished Name) qui sera donc le 'username' dans l'OU 'All' et le groups dans le groupe 'All'
+dn = '"CN={},{}"'.format(username, users_ou)
 groups = '"cn=All,{}" '.format(groups_ou)
+
 Remarque : Vous pouvez modifier selon les besoins
 
 Nous déclarons, ensuite, la commande à utiliser
-command = 'dsadd user '
-'{} '
-'-samid "{}" '
-'-upn "{}" '
-'-display "{}" '
-'-empid "{}" '
-'-desc "{}" '
-'-disabled {} '
-'-pwd {} '
-'-mustchpwd yes '
-'-pwdneverexpires no '
-'-memberof {} '
-'-acctexpires never '
+command = 'dsadd user ' \
+'{} ' \
+'-samid "{}" ' \
+'-upn "{}" ' \
+'-display "{}" ' \
+'-empid "{}" ' \
+'-desc "{}" ' \
+'-disabled {} ' \
+'-pwd {} ' \
+'-mustchpwd yes ' \
+'-pwdneverexpires no ' \
+'-memberof {} ' \
+'-acctexpires never ' \
 ''.format( dn, username, username, display_name, employee_id, description, disabled, default_password, groups, )
 
 Nous envoyons la commande à 'cmd'
@@ -84,7 +88,9 @@ os.system(command)
 
 5. Récupérer les paramètres dans un fichier texte(.txt) et appeler la fonction 'create_user'
 
-On se positionne dans le répertoire où se trouve le script et le fichier .txt ouis on ouvre le fichier .txt os.chdir(r'C:/Users/Administrateur/Documents/autocreate_users') file = open('users.txt', 'rt')
+On se positionne dans le répertoire où se trouve le script et le fichier .txt ouis on ouvre le fichier .txt 
+os.chdir(r'C:/Users/Administrateur/Documents/autocreate_users') 
+file = open('users.txt', 'rt')
 
 le fichier .txt devra être écrit de la manière suivante:
 jdoe,Commercial,John Doe
