@@ -10,6 +10,7 @@ https://www.python-ldap.org/en/python-ldap-3.3.0/installing.html
 Le module datetime: Ce module informera sur la date et l'heure auxquelles les utilisateurs ont été créés.
 
 Le module os: Le module os servira pour l'envoie de la commande 'dsadd user' avec ses paramètre vers le DOS(cmd). Il peut également pour se positionner dans le répertoire du projet.
+
 2. Le 1er bloc pour initialiser la connexion à l'AD via ldap.
 
 Le script est lancé depuis le serveur disposant lui-même du service Active Directory. Vous pouvez tester votre connexion ldap depuis internet explorer en entrant l'adresse de votre serveur avec le protocole ldap, ici: ldap://127.0.0.1
@@ -23,6 +24,7 @@ Pour pouvoir s'authentifier
 conn.set_option(ldap.OPT_REFERRALS, 0)
 
 Nous nous connectons avec le compte Administrateur et son mot de passe. conn.simple_bind_s('Administrateur@ledomaine.com','password')
+
 3. La déclaration du domaine et des OU (Unité Organisationnelle)
 
 Le domaine controller sur lequel nous allons ajouter nos utilisateurs
@@ -33,6 +35,7 @@ L'OU dans laquelle nos utilisateurs vont être créés Ici, ce sera dans l'OU 'A
 
 L'OU dans laquelle se trouve le groupe utilisateurs ici, Domain_Users_Groups
 groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
+
 4. Création de la fonction 'create_user' avec ses paramètres
 
 Nous allons demander à la fonction d'envoyer à 'cmd' la création d'un utilisateur via la commande 'dsadd user' avec les paramètres 'username', 'employee_id', 'display_name'. le boléen 'active' sera 'False' par défaut.
@@ -78,6 +81,7 @@ command = 'dsadd user '
 
 Nous envoyons la commande à 'cmd'
 os.system(command)
+
 5. Récupérer les paramètres dans un fichier texte(.txt) et appeler la fonction 'create_user'
 
 On se positionne dans le répertoire où se trouve le script et le fichier .txt ouis on ouvre le fichier .txt os.chdir(r'C:/Users/Administrateur/Documents/autocreate_users') file = open('users.txt', 'rt')
