@@ -98,23 +98,23 @@ jadoe,Comptable,Jane Doe
 
 Pour les lignes dans le fichier
 for line in file:
-La méthode strip() supprime tous les caractères à droite et à gauche de la chaîne de caractères.
-La fonction split() va découper la chaîne de caractères en délimitant les blocs par la ",".
-  users_paramaters_list = line.strip().split(",")
-On déclare un nouveau dictionnaire contenant les paramètres utilisateurs(0=username, 1=employee_id, 2=display_name)
-  users_paramaters = {}
-  users_paramaters['username'] = users_paramaters_list[0]
-  users_paramaters['employee_id'] = users_paramaters_list[1]
-  users_paramaters['display_name'] = users_paramaters_list[2]
-On appelle la fonction create_user pour associer les paramètres contenus dans le fichier texte et on active le profil
+La méthode strip() supprime tous les caractères à droite et à gauche de la chaîne de caractères. \
+La fonction split() va découper la chaîne de caractères en délimitant les blocs par la ",". \
+  users_paramaters_list = line.strip().split(",") \
+On déclare un nouveau dictionnaire contenant les paramètres utilisateurs(0=username, 1=employee_id, 2=display_name) \
+  users_paramaters = {} \
+  users_paramaters['username'] = users_paramaters_list[0] \
+  users_paramaters['employee_id'] = users_paramaters_list[1] \
+  users_paramaters['display_name'] = users_paramaters_list[2] \
+On appelle la fonction create_user pour associer les paramètres contenus dans le fichier texte et on active le profil \
 create_user(users_paramaters['username'],users_paramaters['employee_id'],users_paramaters['display_name'],active=True)
 
-On ferme le fichier
+On ferme le fichier \
 file.close()
 
-Et on met le système en pause afin de voir le retour du script
+Et on met le système en pause afin de voir le retour du script \
 os.system("pause")
 
-Si le script est correctement écrit, vous devriez avoir ce retour dans 'cmd'
-dsadd réussite:CN=jdoe,OU=All,OU=Domain_Users,DC=ledomaine,DC=com
+Si le script est correctement écrit, vous devriez avoir ce retour dans 'cmd' \
+dsadd réussite:CN=jdoe,OU=All,OU=Domain_Users,DC=ledomaine,DC=com \
 dsadd réussite:CN=jadoe,OU=All,OU=Domain_Users,DC=ledomaine,DC=com
