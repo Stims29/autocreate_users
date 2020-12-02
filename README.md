@@ -61,8 +61,8 @@ Et nous déclarons le mot de par défaut de l'utilisateur.
 description = "Utilisateur ajouté par script python le {}".format(datetime.datetime.now())
 default_password = 'P@55worD'
 
-Nous déclarons le dn (Distinguished Name) qui sera donc le 'username' dans l'OU 'All' et le groups dans le groupe 'All'
-dn = '"CN={},{}"'.format(username, users_ou)
+Nous déclarons le dn (Distinguished Name) qui sera donc le 'username' dans l'OU 'All' et le groups dans le groupe 'All' \
+dn = '"CN={},{}"'.format(username, users_ou) \
 groups = '"cn=All,{}" '.format(groups_ou)
 
 Remarque : Vous pouvez modifier selon les besoins
