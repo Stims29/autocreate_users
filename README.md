@@ -88,8 +88,8 @@ os.system(command)
 
 5. Récupérer les paramètres dans un fichier texte(.txt) et appeler la fonction 'create_user'
 
-On se positionne dans le répertoire où se trouve le script et le fichier .txt ouis on ouvre le fichier .txt 
-os.chdir(r'C:/Users/Administrateur/Documents/autocreate_users') 
+On se positionne dans le répertoire où se trouve le script et le fichier .txt ouis on ouvre le fichier .txt \
+os.chdir(r'C:/Users/Administrateur/Documents/autocreate_users') \
 file = open('users.txt', 'rt')
 
 le fichier .txt devra être écrit de la manière suivante:
