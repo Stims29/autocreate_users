@@ -15,7 +15,7 @@ conn.protocol_version = 3
 conn.set_option(ldap.OPT_REFERRALS, 0)
 conn.simple_bind_s('Administrateur@ledomaine.com','password')
 
-# Préciser sur quel domaine la connection s'effectue ainsi que l'OU et le groupe        
+# Préciser sur quel domaine la connexion s'effectue ainsi que l'OU et l'OU_groupe des utilisateurs       
 domain_controller = 'DC=ledomaine,DC=com'
 users_ou = 'OU=All,OU=Domain_Users,{}'.format(domain_controller)
 groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
@@ -23,7 +23,7 @@ groups_ou = 'OU=Domain_Users_Groups,{}'.format(domain_controller)
 # Fonction qui crée le username(pour ouvrir une session sur le domaine), la fonction de l'utilisateur dans l'entreprise, le prénom et le nom complet.
 def create_user(username, employee_id, display_name, active=False):
     """
-    Créé un nouvel utilisateur dans l'AD
+    Créer un nouvel utilisateur dans l'AD
     :param username:
     :param employee_id:
     :param display_name:
