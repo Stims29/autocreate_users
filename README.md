@@ -15,18 +15,19 @@ Le module os: Le module os servira pour l'envoie de la commande 'dsadd user' ave
 
 Le script est lancé depuis le serveur disposant lui-même du service Active Directory. Vous pouvez tester votre connexion ldap depuis internet explorer en entrant l'adresse de votre serveur avec le protocole ldap, ici: ldap://127.0.0.1
 
+On crée l'objet 'conn' \
 conn = ldap.initialize('ldap://127.0.0.1')
 
 Nous utilisons le module python_ldap-3.3.1 donc la version 3 \
 conn.protocol_version = 3
 
-Pour pouvoir s'authentifier \
+Pour éviter le retour de credential invalide et pouvoir s'authentifier \
 conn.set_option(ldap.OPT_REFERRALS, 0)
 
 Nous nous connectons avec le compte Administrateur et son mot de passe.
 conn.simple_bind_s('Administrateur@ledomaine.com','password')
 
-3. La déclaration du domaine et des OU (Unité Organisationnelle)
+3. La déclaration de l'objet domaine et des OU (Unité Organisationnelle)
 
 Le domaine controller sur lequel nous allons ajouter nos utilisateurs
 ici ledomaine.com \
