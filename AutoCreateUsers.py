@@ -4,9 +4,10 @@
 # autocreate_users est un script Python pour automatiser l'ajout d'utilisateurs dans l'Active Directory depuis un fichier .txt.
 # __author__      = "Steve Beyer"
 
+import ldap
 import datetime
 import os
-import ldap
+
 
 # Initialiser une nouvelle connexion ldap pour modifier l'Active Directory avec le compte Administrateur
 conn = ldap.initialize('ldap://127.0.0.1')
